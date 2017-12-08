@@ -1,0 +1,110 @@
+Header
+	-TopAlert (not sticky)
+	-Navigation (sticky all viewports)
+		-Logo
+		-Show/Hide Icon
+		-# Li Items
+			-# Li Items
+		-Buy Tickets CTA
+
+
+Footer
+	-"Learn More" menu
+	    -headline
+		-# Li Items
+	-Newsletter Signup Menu
+	    -headline
+	    -copy
+	    -email address
+	    -submit button
+		-"Thank you"
+	-Partners
+		-headline
+		-# of <a><img /></a>
+    -copyright
+    -social media links
+    	-# of <a><img /></a>
+
+
+Homepage
+	-Header
+	-Hero
+		-img
+		-headline
+		-body
+		-cta button
+	-Callouts
+		-# of Callouts (lefty/righty/fullwidth)
+			-anchor title (<a name="st-louis-riverfront-cruise">)
+			-img (optional but probably)
+			-color (mandatory)
+			-headline
+			-body
+			-CTAButton
+	-Footer
+
+Experience Page
+	-ExperienceSection
+		-Substicky Header
+			-unique color
+			-Title text
+			-menu
+				-# li 
+					-url
+					-link text
+					-icon
+		-Img
+		-headline
+		-body copy
+		-# (max 3) of <img />
+		-Footer address bar
+	-CTAGroup
+		-headline
+		-copy text
+		-# of CTAItems
+			-CTAItems
+				-img
+				-text
+				-url
+	-Callout (fullwidth)
+
+CTAButton
+	-url
+	-text
+	-color
+
+ContentBlock (:even coloring)
+	-top img (optional)
+	-left img (optional, excludes top img)
+	-text alignment ddl (left/center/right)
+	-headline
+	-copy html (wysiwyg)
+	-CTAButton (optional)
+	-expanded copy
+	-ShareLink (boolean optional)
+	-submenu
+		-icon
+		-text
+		-url
+
+ContentBlockGroup
+	-type {"expereince left/right checker", "vertical alternate"}
+	-# of ContentBlocks
+
+Directions Page
+	-ContentBlock
+		-top img (optional)
+		-left img (optional, excludes top img)
+		-headline
+		-copy html (wysiwyg)
+		-CTAButton (optional)
+		-expanded copy
+		-ShareLink (boolean optional)
+
+Forms
+	-ContentBlock
+	-Form
+	-"Thank You" page
+
+Thank You Page
+	-ContentBlock
