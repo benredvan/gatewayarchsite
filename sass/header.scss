@@ -1,0 +1,329 @@
+@import "variables";
+
+/* normalizers */
+@import "normalize.css";
+
+
+.showMobile{
+	display: none;
+}
+.hideMobile{
+	display: inherit;
+}
+@include respond(mobile){
+	.showMobile{
+		display: block;
+	}
+	.hideMobile{
+		display: none;
+	}
+}
+
+header{
+	background: $white;
+	border-top: 1px solid $grey-light;
+	border-bottom: 1px solid $grey-light;
+	width: 100%;
+	height: 50px;
+    @include respond(mobile){
+		height: 100px;
+	}
+
+	.innerWrapper{
+		max-width: $outerWidth;
+		margin: 0 auto;
+
+		@include respond(mobile){
+			background: $white;
+			position: fixed;
+			width: 100%;
+			height: 100px;
+			z-index: 100;
+		}
+	}
+
+	.homeLink{
+		display: inline-block;
+		background-image: url('../images/logo.svg');
+		background-repeat: no-repeat;
+		background-position: 50%;
+		height: 50px;
+		width: 300px;
+    	margin: 0 0 0 88px;
+
+    	@include respond(mobile){
+    		position: absolute;
+    		top: 50px;
+    		width: 100%;
+    		margin: 0;
+    		background-color: white;
+    	}
+	}
+	
+	ul#navigation{
+		display: inline-block;
+		vertical-align: top;
+		list-style-type: none;
+		margin: 0;
+		padding: 0;
+		transition: .15s;
+
+
+		@include respond(mobile) {
+			display: none;
+			height: 0px;
+			box-shadow: 0px 15px 10px -1px rgba(0, 0, 0, 0.33);
+			overflow: auto;
+		}
+
+		> li {
+			height: 50px;
+			display: inline-block;
+			border-left: 1px solid $grey-light;
+			position: relative;
+			text-transform: capitalize;
+
+			@include respond(mobile){
+				display: block;
+				width: 100%;
+				height: initial;
+				border-left: iniital;
+				position: relative;
+				border:0;
+				border-bottom: 1px solid $grey-light;
+
+				> a:after{
+					content: ' ';
+					width: 15px;
+					height: 15px;
+					border-right: 1.5px solid $grey;	
+					border-bottom: 1.5px solid $grey;
+					transform: rotate(-135deg);
+					transition: .15s;
+					position: absolute;
+					top: 20px;
+					right: 30px;
+				}
+
+				&:hover{
+					> a:after{
+						transform: rotate(45deg);
+						top: 12px;
+					}
+
+				}
+			}
+
+			&:hover{
+				ul.level-2{
+					display: block;
+					height: auto;
+				}	
+				a{
+					text-decoration: underline;
+				}
+			}
+			a{
+				box-sizing: border-box;
+				text-decoration: none;
+				text-transform: capitalize;
+				color: $grey;
+				line-height: 50px;
+				text-align: center;
+				padding: 0 24px;
+
+				a:hover{
+					text-decoration: underline;
+				}
+			}
+			ul.level-2{
+				list-style-type: none;
+				display: none;
+				position: absolute;
+				left: -1;
+				top: 49px;
+				padding: 0;
+				background: $white;
+				border: 1px solid $grey-light;
+				box-shadow: 2px 5px 10px -1px rgba(0,0,0,0.33);
+				width: 200%;
+				transition: .15s;
+
+				@include respond(mobile){
+					width: 100%;
+					box-shadow: initial;
+					position: initial;
+					height: 0;
+					border: 0;
+				}
+
+
+				li{
+					a{
+						width: 100%;
+						line-height: 2.5;
+						padding: 0 12px;
+						text-transform: capitalize;
+						text-decoration: none;
+
+						@include respond(mobile){
+							background: $grey-light;							
+							display: block;
+							text-align: left;
+							border-bottom: 1px solid $white;
+							padding-left: 60px;
+							&:hover{
+								text-decoration: underline;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+	button#buyTicketTop{
+		transition: 0;
+		float: right;
+		vertical-align: top;
+		line-height: 50px;
+	    padding: 0 33px;
+	    font-size: 16px;
+	    margin-top: 0;
+
+    	@include respond(mobile){
+    		width: 50%;
+    		padding: 0;
+			height: 50px;
+    	}	
+	}
+}
+
+.show-nav{
+	transition: .15s;
+	.mobileMenu{
+		.hideMenuOpen{
+			display: none;
+		}
+		.showMenuOpen{
+			display: inline-block;
+		}
+	}
+	ul#navigation{
+		display: block;
+		z-index: 10;
+		background: white;
+		position: absolute;
+		width: 100%;
+		height: auto;
+	}
+}
+
+.mobileMenu{
+	display: none;
+	background: $blue;
+	color: $grey-light;
+	width: 50%;
+	float: none;
+	cursor: pointer;
+
+	@include respond(mobile) {
+		display: inline-block;
+		vertical-align: top;
+	}
+
+	.hideMenuOpen{
+		display: inline-block;
+	}
+	.showMenuOpen{
+		display: none;
+	}
+	
+	.label{
+		line-height: 50px;
+		span{
+			line-height: 50px;
+			vertical-align: top;
+		}
+	}
+
+	.hamburger {
+		display: inline-block;
+		font: inherit;
+		overflow: visible;
+		margin: 0;
+		padding: 14px;
+		cursor: pointer;
+		transition-timing-function: linear;
+		transition-duration: .15s;
+		transition-property: opacity,filter;
+		text-transform: none;
+		color: inherit;
+		border: 0;
+		background-color: transparent;
+	}
+	.hamburger-box {
+		position: relative;
+		display: inline-block;
+		width: 2.2rem;
+		height: 24px;
+	}
+	.hamburger .hamburger-inner {
+		background-color: $grey-light;
+		&:after, &:before {
+		  background-color: $grey-light;
+		}
+	}
+	.hamburger-inner {
+		position: absolute;
+		width: 2.2rem;
+		height: 2px;
+		top: 2px;
+		transition-timing-function: ease;
+		transition-duration: .15s;
+		transition-property: transform;
+		border-radius: 4px;
+		background-color: #000;
+		.show-nav &{
+			//X it up
+			transform: translate3d(-2px,9px,38px) rotate(45deg)
+		}
+
+		&:after, &:before {
+		  position: absolute;
+		  width: 2.2rem;
+		  height: 2px;
+		  transition-timing-function: ease;
+		  transition-duration: .15s;
+		  transition-property: transform;
+		  border-radius: 4px;
+		  background-color: #000;
+		}
+		&:after {
+		  display: block;
+		  content: "";
+
+		  .show-nav &{
+		  	transform: translate3d(0,-17px,0) rotate(-90deg)
+		  }
+		}
+		&:before {
+		  display: block;
+		  content: "";
+		  top: 8px;
+		  transition-timing-function: ease;
+		  transition-duration: .15s;
+		  transition-property: transform, opacity;
+
+		  .show-nav &{
+		  	transform: rotate(-45deg) translate3d(-5.71px,-6px,0);
+			opacity: 0;
+		  }
+		}
+		&:after {
+		  bottom: -10px;
+		  top: 16px;
+		}
+
+	}
+}

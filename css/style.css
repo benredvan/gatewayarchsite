@@ -1,5 +1,225 @@
-body {
-  background: white;
-  border: 3px solid yellow; }
+/********************************************************************************
+*********************************************************************************
 
-/*# sourceMappingURL=style.css.map */
+EVERYWHERE
+
+*********************************************************************************
+********************************************************************************/
+
+body {
+	font-family: 'Open Sans', sans-serif;
+	color: #55565a;
+	margin: 0;
+}
+
+.clear {
+	clear: both;
+}
+
+.circus {
+	background-image: url(../images/circus.svg);
+	background-size: 56px 10px;
+	background-position: bottom center;
+	background-repeat: no-repeat;
+	padding-bottom: 20px;
+}
+
+/********************************************************************************
+*********************************************************************************
+
+BANNER
+
+*********************************************************************************
+********************************************************************************/
+
+.banner {
+	background-size: cover;
+	height: 550px;
+	width: 100%;
+	background-position: left center;
+}
+
+@media screen and (max-width: 768px) {
+	.banner {
+		height: 300px;
+	}
+}
+
+/********************************************************************************
+*********************************************************************************
+
+SIMPLE
+
+*********************************************************************************
+********************************************************************************/
+
+.simple {
+	background-color: #fff;
+	text-align: center;
+	background-size: cover;
+}
+.simple.blue {
+	background-color: #001D77;
+	color: #fff;
+}
+
+.simple .inner {
+	width: 850px;
+	max-width: 90%;
+	margin: 0 auto;
+	padding: 56px 0;
+}
+
+.simple .inner h1 {
+	
+}
+
+.simple .inner div {
+	
+}
+
+.simple .inner a.button {
+	margin: 30px 0 0 0;
+}
+
+/********************************************************************************
+*********************************************************************************
+
+CHECKERBOARD
+
+*********************************************************************************
+********************************************************************************/
+
+.checkerboard {
+	width: 1200px;
+	max-width: 100%;
+	margin: 0 auto;
+	background-color: #fff;
+}
+
+.checkerboard > div {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: row;
+}
+.checkerboard > div:nth-child(even) {
+	flex-direction: row-reverse;
+	text-align: right;
+}
+
+.checkerboard > div div.image {
+	width: 50%;
+	height: 400px;
+	background-size: cover;
+	background-position: right center;
+	position: relative;
+}
+.checkerboard > div:nth-child(even) div.image {
+	background-position: left center;
+}
+
+.checkerboard > div div.image div.arrow {
+	position: absolute;
+	top: calc(50% - 8px);
+	border-top: solid 16px transparent;
+	border-bottom: solid 16px transparent;
+	width: 0;
+	height: 0;
+	border-right: solid 16px #fff;
+	right: 0;
+}
+.checkerboard > div:nth-child(even) div.image div.arrow {
+	border-left: solid 16px #fff;
+	border-right: solid 16px transparent;
+	left: 0;
+}
+
+.checkerboard > div div.content {
+	box-sizing: border-box;
+	width: 50%;
+	padding: 0 6%;
+	
+}
+
+.checkerboard > div div.content h2 {
+}
+
+.checkerboard > div div.content h3 {
+	font-style: italic;
+	margin-top: -6px;
+	font-size: 18px;
+}
+
+.checkerboard > div div.content a {
+	margin-top: 32px;
+}
+
+@media screen and (max-width: 768px) {
+	
+	.checkerboard > div:nth-child(odd),
+	.checkerboard > div:nth-child(even) {
+		display: block;
+		text-align: center;
+	}
+	
+	.checkerboard > div div.image {
+		width: 100%;
+		height: 50%;
+	}
+	.checkerboard > div:nth-child(odd) div.image {
+		background-position: center center;
+	}
+	.checkerboard > div:nth-child(even) div.image {
+		background-position: center center;
+	}
+	
+	.checkerboard > div div.image div.arrow,
+	.checkerboard > div:nth-child(even) div.image div.arrow {
+		position: absolute;
+		top: auto;
+		bottom: 0;
+		right: 0;
+		left: calc(50% - 8px);
+		border-top: solid 16px transparent;
+		border-left: solid 16px transparent;
+		border-right: solid 16px transparent;
+		border-bottom: solid 16px #fff;
+	}
+	
+	.checkerboard > div div.content {
+		width: 100%;
+		padding: 32px 32px;
+	}
+}
+
+/********************************************************************************
+*********************************************************************************
+
+EVENT SPINNER
+
+*********************************************************************************
+********************************************************************************/
+
+.event-spinner {
+	background-color: #fff;
+}
+
+.event-spinner .inner {
+	width: 1024px;
+	max-width: 90%;
+	margin: 0 auto;
+	padding: 56px 0;
+	text-align: center;
+	
+	display: flex;
+}
+
+.event-spinner .inner > div {
+	
+}
+
+.event-spinner .inner > div a.button {
+	margin-top: 30px;
+}
+

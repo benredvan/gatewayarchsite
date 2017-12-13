@@ -1,0 +1,106 @@
+$outerWidth: 1200px;
+$innerWidth: 1024px;
+$mobileWidth: 768px;
+
+
+//colors
+$grey: #4d4f53;
+$grey-light: #f6f6f6;
+$blue: #001d77;
+$blue-light: #00a1de;
+$green: #00b092;
+$white: #fff;
+$orange: #ff6319;
+$orange-light :#f79121;
+
+
+//mixin
+@mixin respond($media) {
+  @if $media == mobile {
+    @media only screen and (max-width: $mobileWidth) { @content; }
+  }
+}
+
+//text
+h1, h2, h3, h4, h5{
+	font-weight: normal;
+    margin: 0 0 8px;
+}
+h1{
+	font-size: 34px;
+}
+h2{
+	font-size: 26px;
+}
+h3{
+    font-size: 22px;
+}
+
+body{
+	background-color: $grey-light;
+}
+
+//buttons
+button, .button, input[type="button"], input[type="submit"]{
+	cursor: pointer;
+	border: 0;
+	border-radius: 0;
+	line-height: 3.2;
+	text-transform: uppercase;
+	text-align: center;
+	color: $white;
+	background: linear-gradient(to right, $orange-light , $orange);
+	background-position: left center;
+	text-decoration: none;
+	padding: 0 1.75em;
+	text-decoration: none;
+	font-weight: bold;
+	box-sizing: border-box;
+	display: inline-block;
+	transition: .15s;
+	letter-spacing: 1.2px;
+	margin-top: 30px;
+
+	&:hover{
+		//background: $orange;
+		background-position: right center;
+	}
+
+	&.blue{
+		color: $blue;
+		background: transparent;
+		border: 2px solid $blue;
+		&:hover{
+			color: $white;
+			background: $blue;
+		}
+	}
+	&.blue-light{
+		color: $blue-light;
+		background: transparent;
+		border: 2px solid $blue-light;
+		&:hover{
+			color: $white;
+			background: $blue-light;
+		}
+	}
+	&.green{
+		color: $green;
+		background: transparent;
+		border: 2px solid $green;
+		&:hover{
+			color: $white;
+			background: $green;
+		}
+	}
+	&.orange{
+		color: $orange;
+		background: transparent;
+		border: 2px solid $orange;
+		&:hover{
+			color: $white;
+			background: $orange;
+		}
+	}
+}
+
