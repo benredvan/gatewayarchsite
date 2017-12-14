@@ -21,12 +21,16 @@
 
 header{
 	background: $white;
-	border-top: 1px solid $grey-light;
 	border-bottom: 1px solid $grey-light;
 	width: 100%;
 	height: 50px;
     @include respond(mobile){
-		height: 100px;
+		height: 124px;
+		transition: .15s;
+
+		.pageScrolled &{
+			height: 62px;
+		}
 	}
 
 	.innerWrapper{
@@ -34,11 +38,16 @@ header{
 		margin: 0 auto;
 
 		@include respond(mobile){
-			background: $white;
 			position: fixed;
 			width: 100%;
-			height: 100px;
+			height: 124px;
 			z-index: 100;
+			transition: .15s;
+
+			.pageScrolled &{
+				height: 62px;
+				box-shadow: 0px 7px 10px 0px rgba(0, 0, 0, 0.33);
+			}
 		}
 	}
 
@@ -47,22 +56,40 @@ header{
 		background-image: url('../images/logo.svg');
 		background-repeat: no-repeat;
 		background-position: 50%;
+		background-size: calc(80%);
 		height: 50px;
 		width: 300px;
     	margin: 0 0 0 88px;
 
     	@include respond(mobile){
     		position: absolute;
-    		top: 50px;
+    		top: 62px;
+    		left: 0px;
+    		height: 62px;
     		width: 100%;
     		margin: 0;
     		background-color: white;
+    		transition: .15s;
+    		box-shadow: 0 0 0 0 rgba(0,0,0,0);
+
+    		.pageScrolled &{
+				top: 0px;
+				left: 62px;
+				height: 62px;
+				width: calc(100% - 124px);
+				
+				img{
+					width: 100%;
+				}
+
+
+    		}
     	}
 	}
 	
 	ul#navigation{
 		display: inline-block;
-		vertical-align: top;
+		vertical-align: top; 
 		list-style-type: none;
 		margin: 0;
 		padding: 0;
@@ -78,11 +105,37 @@ header{
 
 		> li {
 			height: 50px;
+			box-sizing: border-box;
 			display: inline-block;
 			border-left: 1px solid $grey-light;
 			position: relative;
 			text-transform: capitalize;
+			border-top: 3px solid transparent;
+			padding: 11px 0 0;
+			transition: .15s;
 
+			&:last-child{
+				border-right: 1px solid $grey-light;
+			}
+
+			&:hover, &.activeMenu{
+				border-top: 3px solid $orange;
+
+				ul.level-2{
+					display: block;
+					height: auto;
+				}
+			}
+			a{
+				box-sizing: border-box;
+				text-decoration: none;
+				text-transform: capitalize;
+				color: $grey;
+				text-align: center;
+				padding: 14px 24px;
+
+			}
+			
 			@include respond(mobile){
 				display: block;
 				width: 100%;
@@ -90,8 +143,13 @@ header{
 				border-left: iniital;
 				position: relative;
 				border:0;
+				border-top: 0;
 				border-bottom: 1px solid $grey-light;
-
+				> a{
+					border: 0;
+					display: block;
+					text-align: left;
+				}
 				> a:after{
 					content: ' ';
 					width: 15px;
@@ -101,11 +159,14 @@ header{
 					transform: rotate(-135deg);
 					transition: .15s;
 					position: absolute;
-					top: 20px;
-					right: 30px;
+					top: 22px;
+					right: 24px;
 				}
 
-				&:hover{
+				&:hover, &.activeMenu{
+					border: 0;
+					border-top: 0;
+
 					> a:after{
 						transform: rotate(45deg);
 						top: 12px;
@@ -114,39 +175,18 @@ header{
 				}
 			}
 
-			&:hover{
-				ul.level-2{
-					display: block;
-					height: auto;
-				}	
-				a{
-					text-decoration: underline;
-				}
-			}
-			a{
-				box-sizing: border-box;
-				text-decoration: none;
-				text-transform: capitalize;
-				color: $grey;
-				line-height: 50px;
-				text-align: center;
-				padding: 0 24px;
-
-				a:hover{
-					text-decoration: underline;
-				}
-			}
 			ul.level-2{
 				list-style-type: none;
 				display: none;
 				position: absolute;
 				left: -1;
-				top: 49px;
+				top: 46px;
 				padding: 0;
 				background: $white;
+				border-top: 0;
 				border: 1px solid $grey-light;
 				box-shadow: 2px 5px 10px -1px rgba(0,0,0,0.33);
-				width: 200%;
+				width: 300px;
 				transition: .15s;
 
 				@include respond(mobile){
@@ -159,19 +199,48 @@ header{
 
 
 				li{
+					border-bottom: 1px solid $grey-light;
+
 					a{
 						width: 100%;
 						line-height: 2.5;
-						padding: 0 12px;
+						padding: 0 50px;
 						text-transform: capitalize;
 						text-decoration: none;
+						position: relative;
+
+						&:before{
+							content: ' ';
+							width: 0; 
+							height: 0; 
+							border-top: 10px solid transparent;
+							border-bottom: 10px solid transparent;
+							border-left: 10px solid $orange;
+							position: absolute;
+							left: 12px;
+							top: 0px;
+							opacity: 0;
+							transition: .15s;
+
+							@include respond(mobile){
+								top: 8px;
+							}
+						} 
+
+						&:hover{
+							text-decoration: underline;
+							
+							&:before{
+								left: 24px;
+								opacity: 1;
+							}
+						}
 
 						@include respond(mobile){
 							background: $grey-light;							
 							display: block;
 							text-align: left;
 							border-bottom: 1px solid $white;
-							padding-left: 60px;
 							&:hover{
 								text-decoration: underline;
 							}
@@ -183,18 +252,74 @@ header{
 	}
 
 	button#buyTicketTop{
-		transition: 0;
+		height: 50px;
 		float: right;
 		vertical-align: top;
 		line-height: 50px;
 	    padding: 0 33px;
-	    font-size: 16px;
+	    font-size: 14px;
+	    font-weight: bold;
 	    margin-top: 0;
+	    font-weight: normal;
+	    position: relative;
+	    overflow: hidden;
+	    @include respond(mobile){
+	    	height: 62px;
+	    }
+
+	    &:before{
+	    	content: ' ';
+			height: 50px;
+			width: 36px;
+			background-image: url(../images/ticket-icon.svg);
+			background-size: 29px;
+			//position: absolute;
+			background-position: 0% 50%;
+			background-repeat: no-repeat;
+			left: 0;
+			top: 0;
+			display: inline-block;
+			transition: .15s;
+
+			@include respond(mobile){
+
+				height: 62px;
+				.pageScrolled &{
+					width: 62px;
+					background-position: 50% 50%;
+					background-size: 40px;
+				}
+			}
+	    }
+	    label{
+			padding-left: 0;
+			font-weight: bold;
+			line-height: 50px;
+			vertical-align: top;
+	    }
 
     	@include respond(mobile){
     		width: 50%;
     		padding: 0;
-			height: 50px;
+			height: 62px;
+			transition: .15s;
+
+			label{
+				padding-left: 0;
+				font-weight: bold;
+				line-height: 62px;
+				vertical-align: top;
+			}
+
+			.pageScrolled &{
+				width: 62px;
+
+				label{
+					width: 0px;
+					display: none;
+					opacity: 0;
+				}
+			}
     	}	
 	}
 }
@@ -215,6 +340,7 @@ header{
 		background: white;
 		position: absolute;
 		width: 100%;
+		padding: 0;
 		height: auto;
 	}
 }
@@ -223,13 +349,23 @@ header{
 	display: none;
 	background: $blue;
 	color: $grey-light;
+	height: 50px;
 	width: 50%;
 	float: none;
 	cursor: pointer;
+	text-align: center;
+
 
 	@include respond(mobile) {
 		display: inline-block;
 		vertical-align: top;
+		transition: .15s;
+		height: 62px;
+		overflow: hidden;
+
+		.pageScrolled &{
+			width: 62px;
+		}
 	}
 
 	.hideMenuOpen{
@@ -241,9 +377,28 @@ header{
 	
 	.label{
 		line-height: 50px;
+		padding-left: 0.5em;
+		width: 100%;
+		text-align: left;
+		font-size: 14px;
+		font-weight: bold;
+
+		transition: .15s;
+		overflow:hidden;
 		span{
 			line-height: 50px;
 			vertical-align: top;
+		}
+		@include respond(mobile){
+			line-height: 62px;
+			span{
+				line-height: 62px;
+			}
+			.pageScrolled &{
+				display: none;
+				opacity: 0;
+				width: 0px;
+			}
 		}
 	}
 
@@ -252,7 +407,7 @@ header{
 		font: inherit;
 		overflow: visible;
 		margin: 0;
-		padding: 14px;
+		padding: 19px 0px;
 		cursor: pointer;
 		transition-timing-function: linear;
 		transition-duration: .15s;
@@ -261,6 +416,7 @@ header{
 		color: inherit;
 		border: 0;
 		background-color: transparent;
+		transform: scale(.9);
 	}
 	.hamburger-box {
 		position: relative;
@@ -300,7 +456,7 @@ header{
 		  background-color: #000;
 		}
 		&:after {
-		  display: block;
+		  display: block; 
 		  content: "";
 
 		  .show-nav &{

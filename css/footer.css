@@ -14,51 +14,54 @@ h3 {
 body {
   background-color: #f6f6f6; }
 
+a {
+  color: #00a1de;
+  text-decoration: underline; }
+
 button, .button, input[type="button"], input[type="submit"] {
   cursor: pointer;
   border: 0;
   border-radius: 0;
-  line-height: 3.2;
   text-transform: uppercase;
   text-align: center;
   color: #fff;
   background: linear-gradient(to right, #f79121, #ff6319);
   background-position: left center;
   text-decoration: none;
-  padding: 0 1.75em;
   text-decoration: none;
   font-weight: bold;
   box-sizing: border-box;
   display: inline-block;
   transition: .15s;
   letter-spacing: 1.2px;
-  margin-top: 30px; }
+  margin-top: 30px;
+  padding: 15px; }
   button:hover, .button:hover, input[type="button"]:hover, input[type="submit"]:hover {
     background-position: right center; }
   button.blue, .button.blue, input[type="button"].blue, input[type="submit"].blue {
     color: #001d77;
-    background: transparent;
+    background: #fff;
     border: 2px solid #001d77; }
     button.blue:hover, .button.blue:hover, input[type="button"].blue:hover, input[type="submit"].blue:hover {
       color: #fff;
       background: #001d77; }
   button.blue-light, .button.blue-light, input[type="button"].blue-light, input[type="submit"].blue-light {
     color: #00a1de;
-    background: transparent;
+    background: #fff;
     border: 2px solid #00a1de; }
     button.blue-light:hover, .button.blue-light:hover, input[type="button"].blue-light:hover, input[type="submit"].blue-light:hover {
       color: #fff;
       background: #00a1de; }
   button.green, .button.green, input[type="button"].green, input[type="submit"].green {
     color: #00b092;
-    background: transparent;
+    background: #fff;
     border: 2px solid #00b092; }
     button.green:hover, .button.green:hover, input[type="button"].green:hover, input[type="submit"].green:hover {
       color: #fff;
       background: #00b092; }
   button.orange, .button.orange, input[type="button"].orange, input[type="submit"].orange {
     color: #ff6319;
-    background: transparent;
+    background: #fff;
     border: 2px solid #ff6319; }
     button.orange:hover, .button.orange:hover, input[type="button"].orange:hover, input[type="submit"].orange:hover {
       color: #fff;
@@ -72,7 +75,7 @@ footer .social {
     footer .social a img {
       width: 35px;
       height: 35px; }
-  @media only screen and (max-width: 768px) {
+  @media (max-width: 768px) {
     footer .social {
       text-align: center;
       float: none;
@@ -97,7 +100,7 @@ div.footer-1-inner {
   padding: 40px 0;
   max-width: 90%;
   display: flex; }
-  @media only screen and (max-width: 768px) {
+  @media (max-width: 768px) {
     div.footer-1-inner {
       width: initial;
       max-width: 100%;
@@ -108,7 +111,7 @@ div.footer-1-inner {
   div.footer-1-inner > div {
     border-right: solid 1px #f6f6f6;
     padding: 0 32px; }
-    @media only screen and (max-width: 768px) {
+    @media (max-width: 768px) {
       div.footer-1-inner > div {
         border-right: 0;
         padding: 0 0 32px;
@@ -117,41 +120,45 @@ div.footer-1-inner {
         div.footer-1-inner > div:last-child {
           border-bottom: 0;
           margin-bottom: 0; } }
-  div.footer-1-inner div.menu {
+  div.footer-1-inner .menu {
     flex: 0 0 320px; }
-  div.footer-1-inner div.newsletter {
+  div.footer-1-inner .newsletter {
     flex: 0 0 252px; }
-    div.footer-1-inner div.newsletter ul {
+    div.footer-1-inner .newsletter ul {
       margin: 0;
       padding: 0;
       list-style: none; }
-    div.footer-1-inner div.newsletter .gfield_html {
+    div.footer-1-inner .newsletter .gfield_html {
       font-size: 14px;
       line-height: 18.35px; }
-    div.footer-1-inner div.newsletter input[type='text'] {
+    div.footer-1-inner .newsletter input[type='text'] {
       width: 100%;
       padding: 12px;
       margin: 12px 0 12px 0; }
-    div.footer-1-inner div.newsletter label {
+    div.footer-1-inner .newsletter label {
       display: none; }
-    div.footer-1-inner div.newsletter .button {
+    div.footer-1-inner .newsletter .button {
       border: 1px solid #ff6319;
       background: transparent;
       font-weight: normal; }
-  div.footer-1-inner div.partners {
+  div.footer-1-inner .partners {
     border-right: none;
     flex: 0 0 260px; }
-    @media only screen and (max-width: 768px) {
-      div.footer-1-inner div.partners {
+    @media (max-width: 768px) {
+      div.footer-1-inner .partners {
         text-align: center; }
-        div.footer-1-inner div.partners h3 {
+        div.footer-1-inner .partners h3 {
           text-align: left;
           margin-bottom: 16px; } }
-    div.footer-1-inner div.partners a {
-      display: inline-block;
-      margin: 0 10px 20px 0; }
-      div.footer-1-inner div.partners a img {
-        width: auto; }
+    div.footer-1-inner .partners .partnerIcons {
+      display: flex;
+      flex-wrap: wrap; }
+      div.footer-1-inner .partners .partnerIcons a {
+        display: inline-block;
+        margin: 0 10px 20px 0;
+        flex-grow: 1; }
+        div.footer-1-inner .partners .partnerIcons a img {
+          width: auto; }
 
 ul#menu-footer-menu {
   margin: 0;
@@ -160,7 +167,7 @@ ul#menu-footer-menu {
   column-count: 2;
   column-gap: 30px;
   font-size: 14px; }
-  @media only screen and (max-width: 768px) {
+  @media (max-width: 768px) {
     ul#menu-footer-menu {
       column-count: 1; } }
   ul#menu-footer-menu li {
@@ -179,7 +186,7 @@ ul#menu-footer-menu {
   padding: 12px 0;
   width: 1050px;
   max-width: 90%; }
-  @media only screen and (max-width: 768px) {
+  @media (max-width: 768px) {
     .footer-2-inner {
       width: initial;
       max-width: 100%;
@@ -191,7 +198,7 @@ ul#menu-footer-menu {
   padding-left: 32px;
   margin: 6px 0 0 0;
   font-size: 12px; }
-  @media only screen and (max-width: 768px) {
+  @media (max-width: 768px) {
     .footer-2 .copyright {
       text-align: center;
       padding-right: 32px; } }

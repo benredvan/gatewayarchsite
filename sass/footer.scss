@@ -73,55 +73,61 @@ div.footer-1-inner {
       }
     }
   }
-  div {
-    &.menu {
-      flex: 0 0 320px;
+  
+  .menu {
+    flex: 0 0 320px;
+  }
+  .newsletter {
+    flex: 0 0 252px;
+    ul {
+      margin: 0;
+      padding: 0;
+      list-style: none;
     }
-    &.newsletter {
-      flex: 0 0 252px;
-      ul {
-        margin: 0;
-        padding: 0;
-        list-style: none;
-      }
-      .gfield_html {
-        font-size: 14px;
-        line-height: 18.35px;
-      }
-      input[type='text'] {
-        width: 100%;
-        padding: 12px;
-        margin: 12px 0 12px 0;
-      }
-      label {
-        display: none;
-      }
-      .button{
-        border: 1px solid $orange;
-        background: transparent;
-        font-weight: normal;
-      }
+    .gfield_html {
+      font-size: 14px;
+      line-height: 18.35px;
     }
-    &.partners {
-      border-right: none;
-      flex: 0 0 260px;
-      @include respond(mobile){
-        text-align: center;
+    input[type='text'] {
+      width: 100%;
+      padding: 12px;
+      margin: 12px 0 12px 0;
+    }
+    label {
+      display: none;
+    }
+    .button{
+      border: 1px solid $orange;
+      background: transparent;
+      font-weight: normal;
+    }
+  }
+  .partners {
+    border-right: none;
+    flex: 0 0 260px;
+    @include respond(mobile){
+      text-align: center;
 
-        h3{
-          text-align: left;
-          margin-bottom: 16px;
-        }
+      h3{
+        text-align: left;
+        margin-bottom: 16px;
       }
+    }
+    .partnerIcons{
+      display: flex;
+      flex-wrap: wrap;
 
       a {
         display: inline-block;
         margin: 0 10px 20px 0;
+        flex-grow: 1;
+        
         img {
           width: auto;
         }
       }
     }
+    
   }
 }
 

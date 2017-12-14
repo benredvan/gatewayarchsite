@@ -17,7 +17,7 @@ $orange-light :#f79121;
 //mixin
 @mixin respond($media) {
   @if $media == mobile {
-    @media only screen and (max-width: $mobileWidth) { @content; }
+    @media (max-width: $mobileWidth) { @content; }
   }
 }
 
@@ -40,19 +40,22 @@ body{
 	background-color: $grey-light;
 }
 
+a{
+	color: $blue-light;
+	text-decoration: underline;
+}
+
 //buttons
 button, .button, input[type="button"], input[type="submit"]{
 	cursor: pointer;
 	border: 0;
 	border-radius: 0;
-	line-height: 3.2;
 	text-transform: uppercase;
 	text-align: center;
 	color: $white;
 	background: linear-gradient(to right, $orange-light , $orange);
 	background-position: left center;
 	text-decoration: none;
-	padding: 0 1.75em;
 	text-decoration: none;
 	font-weight: bold;
 	box-sizing: border-box;
@@ -60,6 +63,7 @@ button, .button, input[type="button"], input[type="submit"]{
 	transition: .15s;
 	letter-spacing: 1.2px;
 	margin-top: 30px;
+	padding: 15px;
 
 	&:hover{
 		//background: $orange;
@@ -68,7 +72,7 @@ button, .button, input[type="button"], input[type="submit"]{
 
 	&.blue{
 		color: $blue;
-		background: transparent;
+		background: $white;
 		border: 2px solid $blue;
 		&:hover{
 			color: $white;
@@ -77,7 +81,7 @@ button, .button, input[type="button"], input[type="submit"]{
 	}
 	&.blue-light{
 		color: $blue-light;
-		background: transparent;
+		background: $white;
 		border: 2px solid $blue-light;
 		&:hover{
 			color: $white;
@@ -86,7 +90,7 @@ button, .button, input[type="button"], input[type="submit"]{
 	}
 	&.green{
 		color: $green;
-		background: transparent;
+		background: $white;
 		border: 2px solid $green;
 		&:hover{
 			color: $white;
@@ -95,7 +99,7 @@ button, .button, input[type="button"], input[type="submit"]{
 	}
 	&.orange{
 		color: $orange;
-		background: transparent;
+		background: $white;
 		border: 2px solid $orange;
 		&:hover{
 			color: $white;
