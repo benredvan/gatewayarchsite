@@ -4,7 +4,6 @@
 footer{
   .social {
     float: right;
-    padding-right: 32px;
     a {
       margin: 0 0 0 12px;
       img {
@@ -42,9 +41,10 @@ footer{
 
 div.footer-1-inner {
   margin: 0 auto;
-  width: 1050px;
-  padding: 40px 0;
-  max-width: 90%;
+  width: 100%;
+  max-width: $outerWidth;
+  padding: 40px;
+  box-sizing: border-box;
   display: flex;
 
   @include respond(mobile){
@@ -59,7 +59,6 @@ div.footer-1-inner {
   }
   > div {
     border-right: solid 1px $grey-light;
-    padding: 0 32px;
 
     @include respond(mobile){
       border-right: 0;
@@ -75,10 +74,12 @@ div.footer-1-inner {
   }
   
   .menu {
-    flex: 0 0 320px;
+    flex: 1;
+    padding: 0 32px 0 0;
   }
   .newsletter {
-    flex: 0 0 252px;
+    flex: 1;
+    padding: 0 32px;
     ul {
       margin: 0;
       padding: 0;
@@ -103,8 +104,9 @@ div.footer-1-inner {
     }
   }
   .partners {
+    flex: 1;
+    padding: 0 0 0 32px;
     border-right: none;
-    flex: 0 0 260px;
     @include respond(mobile){
       text-align: center;
 
@@ -116,6 +118,7 @@ div.footer-1-inner {
     .partnerIcons{
       display: flex;
       flex-wrap: wrap;
+      text-align: center;
 
       a {
         display: inline-block;
@@ -149,6 +152,9 @@ ul#menu-footer-menu {
     a {
       margin: 0;
       padding: 0;
+      &:hover{
+        text-decoration: underline;
+      }
     }
   }
 }
@@ -160,23 +166,20 @@ ul#menu-footer-menu {
 
 .footer-2-inner {
   margin: 0 auto;
-  padding: 12px 0;
-  width: 1050px;
-  max-width: 90%;
+  max-width: $outerWidth;
 
   @include respond(mobile){
     width: initial;
-    max-width: 100%;
     display: block;
     padding: 12px 32px;
   }
 }
 .footer-2  {
+  padding: 8px 40px;
   .copyright {
     float: left;
-    padding-left: 32px;
-    margin: 6px 0 0 0;
     font-size: 12px;
+    line-height: 3;
     
     @include respond(mobile){
       text-align: center;

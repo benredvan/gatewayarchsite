@@ -1,6 +1,6 @@
 $outerWidth: 1200px;
 $innerWidth: 1024px;
-$mobileWidth: 768px;
+$mobileWidth: 1000px;
 
 
 //colors
@@ -38,6 +38,7 @@ h3{
 
 body{
 	background-color: $grey-light;
+	font-family: 'Open Sans', sans-serif;
 }
 
 a{
@@ -47,27 +48,29 @@ a{
 
 //buttons
 button, .button, input[type="button"], input[type="submit"]{
+	font-family: 'Open Sans', sans-serif;
 	cursor: pointer;
 	border: 0;
 	border-radius: 0;
 	text-transform: uppercase;
 	text-align: center;
 	color: $white;
-	background: linear-gradient(to right, $orange-light , $orange);
+	background: linear-gradient(to right, $orange-light 0%, $orange 50%);
+	background-size: 200%;
 	background-position: left center;
 	text-decoration: none;
 	text-decoration: none;
 	font-weight: bold;
 	box-sizing: border-box;
 	display: inline-block;
-	transition: .15s;
+	transition: .3s;
 	letter-spacing: 1.2px;
 	margin-top: 30px;
-	padding: 15px;
+	padding: 15px 17px;
 
 	&:hover{
 		//background: $orange;
-		background-position: right center;
+		background-position: right;
 	}
 
 	&.blue{

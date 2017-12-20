@@ -1,9 +1,5 @@
 @import "variables";
 
-/* normalizers */
-@import "normalize.css";
-
-
 .showMobile{
 	display: none;
 }
@@ -19,11 +15,64 @@
 	}
 }
 
+
+.alertBox{
+	font-size: 12px;
+	background: $grey-light;
+	display: block;
+	max-height: 32px;
+	padding: 7px 38px 7px 11px;
+	box-sizing: border-box;
+	transition: .15s;
+
+	width: 100%;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	cursor: pointer;
+
+	label{
+		color: $orange;
+
+		&:after{
+			content: ' ';
+			width: 12px;
+			height: 12px;
+			border-right: 1.5px solid #4d4f53;
+			border-bottom: 1.5px solid #4d4f53;
+			transform: rotate(-135deg);
+			transition: .15s;
+			position: absolute;
+			top: 14px;
+			right: 14px;
+		}
+	}
+	&.showAlert{
+		max-height: 50%;
+		text-overflow: initial;
+		white-space: initial;
+		cursor: initial;
+		overflow: scroll;
+		
+		label:after{
+			transform: rotate(45deg);
+			top: 12px;
+		}
+	}
+
+    @include respond(mobile){
+		.pageScrolled &{
+			max-height: 0;
+			padding: 0;
+		}
+	}
+}
+
 header{
 	background: $white;
 	border-bottom: 1px solid $grey-light;
 	width: 100%;
-	height: 50px;
+	height: 62px;
     @include respond(mobile){
 		height: 124px;
 		transition: .15s;
@@ -36,9 +85,12 @@ header{
 	.innerWrapper{
 		max-width: $outerWidth;
 		margin: 0 auto;
+		display: flex;
+
 
 		@include respond(mobile){
 			position: fixed;
+			display: block;
 			width: 100%;
 			height: 124px;
 			z-index: 100;
@@ -53,13 +105,24 @@ header{
 
 	.homeLink{
 		display: inline-block;
-		background-image: url('../images/logo.svg');
-		background-repeat: no-repeat;
-		background-position: 50%;
-		background-size: calc(80%);
-		height: 50px;
+		height: 62px;
+		min-width: 235px;
 		width: 300px;
-    	margin: 0 0 0 88px;
+    	margin: 0;
+    	text-align: center;
+
+    	> span{
+    		display: inline-block;
+    		margin: 0 auto;
+    		height: 100%;
+    		max-width: 490px;
+	    	width: 100%;
+			background-image: url('../images/logo.svg');
+			background-repeat: no-repeat;
+			background-position: 50%;
+			background-size: 88%;
+    	}
+
 
     	@include respond(mobile){
     		position: absolute;
@@ -77,6 +140,8 @@ header{
 				left: 62px;
 				height: 62px;
 				width: calc(100% - 124px);
+				min-width: initial;
+				max-width: initial;
 				
 				img{
 					width: 100%;
@@ -87,44 +152,52 @@ header{
     	}
 	}
 	
-	ul#navigation{
-		display: inline-block;
+	//navigation menu
+	ul#menu-header-menu{
+		display: inline-flex;
 		vertical-align: top; 
 		list-style-type: none;
 		margin: 0;
 		padding: 0;
 		transition: .15s;
-
+		width: calc(100% - 491px);
 
 		@include respond(mobile) {
-			display: none;
-			height: 0px;
-			box-shadow: 0px 15px 10px -1px rgba(0, 0, 0, 0.33);
+			box-shadow: 0px 5px 10px -1px rgba(0, 0, 0, 0.33);
 			overflow: auto;
+			max-height: 0px;
+			display: block;
 		}
 
 		> li {
-			height: 50px;
+			height: 62px;
 			box-sizing: border-box;
 			display: inline-block;
-			border-left: 1px solid $grey-light;
 			position: relative;
 			text-transform: capitalize;
-			border-top: 3px solid transparent;
-			padding: 11px 0 0;
+			width: 25%;
 			transition: .15s;
+			border-left: 1.5px solid $grey-light;
 
 			&:last-child{
-				border-right: 1px solid $grey-light;
+				border-right: 1.5px solid $grey-light;
 			}
 
 			&:hover, &.activeMenu{
-				border-top: 3px solid $orange;
 
-				ul.level-2{
+				ul.sub-menu{
 					display: block;
-					height: auto;
 				}
+				> a{
+					border-top: 3px solid $orange;
+
+					@include respond(mobile){
+						border-top: 0;
+					}
+				}
+			}
+			> a{
+				border-top: 3px solid transparent;
 			}
 			a{
 				box-sizing: border-box;
@@ -132,8 +205,8 @@ header{
 				text-transform: capitalize;
 				color: $grey;
 				text-align: center;
-				padding: 14px 24px;
-
+				padding: 19px 0;
+				display: block;
 			}
 			
 			@include respond(mobile){
@@ -144,11 +217,14 @@ header{
 				position: relative;
 				border:0;
 				border-top: 0;
+				padding: 0;
 				border-bottom: 1px solid $grey-light;
+				
 				> a{
 					border: 0;
 					display: block;
 					text-align: left;
+					padding: 14px 20px;
 				}
 				> a:after{
 					content: ' ';
@@ -167,25 +243,31 @@ header{
 					border: 0;
 					border-top: 0;
 
+
+
 					> a:after{
 						transform: rotate(45deg);
 						top: 12px;
 					}
 
+					ul.sub-menu{
+						max-height: 50vh;
+					}
+
 				}
 			}
 
-			ul.level-2{
+			ul.sub-menu{
 				list-style-type: none;
 				display: none;
 				position: absolute;
 				left: -1;
-				top: 46px;
+				top: 61px;
 				padding: 0;
 				background: $white;
 				border-top: 0;
 				border: 1px solid $grey-light;
-				box-shadow: 2px 5px 10px -1px rgba(0,0,0,0.33);
+				box-shadow: 1px 2px 2px -1px rgba(0, 0, 0, 0.33);
 				width: 300px;
 				transition: .15s;
 
@@ -193,45 +275,50 @@ header{
 					width: 100%;
 					box-shadow: initial;
 					position: initial;
-					height: 0;
+					max-height: 0;
 					border: 0;
 				}
 
 
 				li{
 					border-bottom: 1px solid $grey-light;
+					
+					&:hover{
+						border-top: 0;
+					}
 
 					a{
 						width: 100%;
-						line-height: 2.5;
-						padding: 0 50px;
+						line-height: 2.75;
+						padding: 9px 50px;
 						text-transform: capitalize;
 						text-decoration: none;
 						position: relative;
+						border-left: 0;
+						text-align: left;
 
+						//orange triangle
 						&:before{
 							content: ' ';
-							width: 0; 
-							height: 0; 
-							border-top: 10px solid transparent;
-							border-bottom: 10px solid transparent;
-							border-left: 10px solid $orange;
+							width: 0;
+							height: 0;
+							border-style: solid;
+							border-width: 50px 0 50px 86.6px;
+							border-color: transparent transparent transparent #ff6319;
+							transform: scale(0.2);
 							position: absolute;
-							left: 12px;
-							top: 0px;
+							left: -24px;
+							top: -19px;
 							opacity: 0;
 							transition: .15s;
-
-							@include respond(mobile){
-								top: 8px;
-							}
 						} 
 
 						&:hover{
 							text-decoration: underline;
+
 							
 							&:before{
-								left: 24px;
+								left: -12px;
 								opacity: 1;
 							}
 						}
@@ -252,24 +339,27 @@ header{
 	}
 
 	button#buyTicketTop{
-		height: 50px;
-		float: right;
+		height: 62px;
 		vertical-align: top;
-		line-height: 50px;
-	    padding: 0 33px;
-	    font-size: 14px;
+		line-height: 62px;
+	    font-size: 16px;
 	    font-weight: bold;
+	    letter-spacing: .5px;
 	    margin-top: 0;
 	    font-weight: normal;
 	    position: relative;
 	    overflow: hidden;
+		width: 195px;
+		padding: 0;
+
 	    @include respond(mobile){
 	    	height: 62px;
 	    }
 
 	    &:before{
+			cursor: pointer;
 	    	content: ' ';
-			height: 50px;
+			height: 62px;
 			width: 36px;
 			background-image: url(../images/ticket-icon.svg);
 			background-size: 29px;
@@ -294,12 +384,17 @@ header{
 	    label{
 			padding-left: 0;
 			font-weight: bold;
-			line-height: 50px;
+			line-height: 62px;
 			vertical-align: top;
+			cursor: pointer;
 	    }
 
     	@include respond(mobile){
     		width: 50%;
+    		display: block;
+			position: absolute;
+			top: 0px;
+			right: 0px;
     		padding: 0;
 			height: 62px;
 			transition: .15s;
@@ -309,6 +404,7 @@ header{
 				font-weight: bold;
 				line-height: 62px;
 				vertical-align: top;
+				font-size: 14px;
 			}
 
 			.pageScrolled &{
@@ -334,14 +430,15 @@ header{
 			display: inline-block;
 		}
 	}
-	ul#navigation{
-		display: block;
+	ul#menu-header-menu{
 		z-index: 10;
 		background: white;
 		position: absolute;
 		width: 100%;
 		padding: 0;
 		height: auto;
+		max-height: calc(100vh - 62px);
+		top: 62px;
 	}
 }
 
@@ -349,8 +446,8 @@ header{
 	display: none;
 	background: $blue;
 	color: $grey-light;
-	height: 50px;
 	width: 50%;
+	height: 62px;
 	float: none;
 	cursor: pointer;
 	text-align: center;
@@ -360,7 +457,6 @@ header{
 		display: inline-block;
 		vertical-align: top;
 		transition: .15s;
-		height: 62px;
 		overflow: hidden;
 
 		.pageScrolled &{
@@ -376,17 +472,17 @@ header{
 	}
 	
 	.label{
-		line-height: 50px;
+		line-height: 62px;
 		padding-left: 0.5em;
 		width: 100%;
 		text-align: left;
 		font-size: 14px;
 		font-weight: bold;
 
-		transition: .15s;
+		transition: opacity .15s width .15s;
 		overflow:hidden;
 		span{
-			line-height: 50px;
+			line-height: 62px;
 			vertical-align: top;
 		}
 		@include respond(mobile){
@@ -416,7 +512,12 @@ header{
 		color: inherit;
 		border: 0;
 		background-color: transparent;
-		transform: scale(.9);
+		transform: scaleX(.6);
+		transition: .15s;
+
+		.show-nav &{
+			transform: scale(.7);
+		}
 	}
 	.hamburger-box {
 		position: relative;
@@ -460,7 +561,7 @@ header{
 		  content: "";
 
 		  .show-nav &{
-		  	transform: translate3d(0,-17px,0) rotate(-90deg)
+		  	transform: translate3d(0,-17px,0) rotate(-90deg) scaleX(1);
 		  }
 		}
 		&:before {
@@ -479,6 +580,155 @@ header{
 		&:after {
 		  bottom: -10px;
 		  top: 16px;
+		}
+
+	}
+}
+
+
+/* 
+	SCROLL STICKY HEADERS
+	https://codepen.io/chrissp26/pen/gBrdo 
+*/
+.module .module-header.fixed {
+	position: fixed;
+	top: 0;
+	width: 100%;
+	box-sizing: border-box;
+	z-index: 1;
+
+	@include respond(mobile){
+		top: 62px;
+	}
+}
+
+.module .module-header.fixed.absolute {
+  position: absolute;
+}
+
+/* timeline */
+.timeline{
+
+	.timelineItem{
+		text-align: right;
+		position: relative;
+		top: -2em;
+		box-sizing: border-box;
+		width: calc(50% - .5px);
+		border-left: 0;
+		border-right: 1px solid $blue;
+		margin-right: 50%;
+		margin-left: 0;
+		padding-right: 3em;
+		padding-bottom: 2em;
+
+		@include respond(mobile){
+			text-align: left;
+			top: 0;
+			position: initial;
+			width: 100%;
+			border: 0;
+			margin: initial;
+			padding: initial;
+			padding-bottom: 2em;
+			border-bottom: 1px solid $blue;
+			margin-bottom: 2em;
+		}
+
+		&:before{
+			//lil dot guy
+			content: ' ';
+			position: absolute;
+			right: 1.5em;
+			top: 9px;
+			border: 3px solid red;
+			border-radius: 50%;
+			background: white;
+			width: .5em;
+			height: .5em;
+			z-index: 2;
+			@include respond(mobile){
+				display: none;
+			}
+		}
+		&:after{
+			//lil line
+			content: ' ';
+			position: absolute;
+			width: calc(1.5em + 1px);
+			top: 1em;
+			right: 0px;
+			left: initial;
+			height: 1px;
+			border-top: 1px solid $blue;
+			z-index: 0;
+			@include respond(mobile){
+				display: none;
+			}
+		}
+		.timelineImg{
+			position: absolute;
+			top: 0;
+			left: calc(100% - 1em);
+			width: 100%;
+
+			@include respond(mobile){
+				position: initial;
+				top: initial;
+				left: initial;
+			}
+
+			img{
+				max-width: calc(100% - 3em);
+				@include respond(mobile){
+					margin-top: 2em;
+					max-width: 100%;
+				}
+			}
+			&:before{
+				//lil line
+				content: ' ';
+				position: absolute;
+				width: 2em;
+				top: 1em;
+				left: 1em;
+				height: 1px;
+				border-top: 1px solid $blue;
+				z-index: 0;
+
+				@include respond(mobile){
+					display: none;
+				}
+			}
+		}
+
+		&:nth-child(even){
+			text-align: left;
+			border-right: 0;
+			border-left: 1px solid $blue;
+			margin-left: calc(50% - 1px);
+			margin-right: 0;
+			padding-left: 3em;
+
+			@include respond(mobile){
+				text-align: left;
+				border: 0px;
+				margin: initial;
+				padding: initial;
+				width: 100%;
+				padding-bottom: 2em;
+				border-bottom: 1px solid $blue;
+				margin-bottom: 2em;
+			}
+
+			&:before{
+				right: initial;
+				left: 1.5em;
+			}
+			&:after{
+				right: initial;
+				left: -1px;
+			}
 		}
 
 	}
