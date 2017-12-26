@@ -1,6 +1,25 @@
 
 
-Flexbox the header
+BEN TASKS:
+set .alertTop text width: max-width, add padding:10px 0 when open, 
+mobile menu show/hide: pick a direction with jerome (fade in and vertical slidedown)
+footer mobile margins on learnmore bottom and newsletter width (FIXED?)
+sticky bar - sub grey menu
 
-On friday:
-https://github.com/addyosmani/critical
+
+JEROMES TASKS:
+checkerboard mobile - image should scale and crop (same rationo big tall)
+Instagram - latest 10 from gatewayarchstl (waiting for IT guy)
+Homepage events carousel, can be anything not just events
+Server Migration to Gateway arch
+
+
+
+
+TODO post-xmas:
+Pageload optimization
+
+
+asks:
+Breadcrumbs?
+Google Analytics…?

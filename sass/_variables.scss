@@ -111,3 +111,24 @@ button, .button, input[type="button"], input[type="submit"]{
 	}
 }
 
+.gform_wrapper{
+	form{
+		.gform_body{
+			.field-sublabel-hide{
+				.ginput_complex.ginput_container{
+
+					label{
+						display: none;
+					}
+				}
+			}
+
+			.newsletter &{
+				input{
+					width: 100%;
+				}
+			}
+		}
+	}
+}
+

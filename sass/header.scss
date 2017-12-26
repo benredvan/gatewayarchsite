@@ -52,7 +52,9 @@
 		text-overflow: initial;
 		white-space: initial;
 		cursor: initial;
-		overflow: scroll;
+		overflow: auto;
+		padding-top: 14px;
+		padding-bottom: 14px;
 		
 		label:after{
 			transform: rotate(45deg);
@@ -270,6 +272,7 @@ header{
 				box-shadow: 1px 2px 2px -1px rgba(0, 0, 0, 0.33);
 				width: 300px;
 				transition: .15s;
+				z-index: 1;
 
 				@include respond(mobile){
 					width: 100%;

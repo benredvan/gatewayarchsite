@@ -2,6 +2,8 @@
 <head>
 	<title>Gateway Arch - Dev Site</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta content="/images/logo.svg" itemprop="image">
+	<meta content="/images/logo.svg" itemprop="logo">
 </head>
 <body>
 
@@ -15,9 +17,6 @@
 <header>
 
 	<div class="innerWrapper">
-
-		<link rel="stylesheet" type="text/css" href="<?php echo(get_bloginfo("template_url")); ?>/css/header.css">
-		
 		
 		<div class="mobileMenu">
 

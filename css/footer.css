@@ -70,6 +70,12 @@ button, .button, input[type="button"], input[type="submit"] {
       color: #fff;
       background: #ff6319; }
 
+.gform_wrapper form .gform_body .field-sublabel-hide .ginput_complex.ginput_container label {
+  display: none; }
+
+.newsletter .gform_wrapper form .gform_body input {
+  width: 100%; }
+
 footer .social {
   float: right; }
   footer .social a {
@@ -125,9 +131,15 @@ div.footer-1-inner {
   div.footer-1-inner .menu {
     flex: 1;
     padding: 0 32px 0 0; }
+    @media (max-width: 1000px) {
+      div.footer-1-inner .menu {
+        padding: 0 0 32px 0; } }
   div.footer-1-inner .newsletter {
     flex: 1;
     padding: 0 32px; }
+    @media (max-width: 1000px) {
+      div.footer-1-inner .newsletter {
+        padding: 0 0 32px 0; } }
     div.footer-1-inner .newsletter ul {
       margin: 0;
       padding: 0;
@@ -151,7 +163,8 @@ div.footer-1-inner {
     border-right: none; }
     @media (max-width: 1000px) {
       div.footer-1-inner .partners {
-        text-align: center; }
+        text-align: center;
+        padding: 0; }
         div.footer-1-inner .partners h3 {
           text-align: left;
           margin-bottom: 16px; } }
@@ -196,7 +209,8 @@ ul#menu-footer-menu {
     .footer-2-inner {
       width: initial;
       display: block;
-      padding: 12px 32px; } }
+      padding: 0;
+      text-align: center; } }
 
 .footer-2 {
   padding: 8px 40px; }

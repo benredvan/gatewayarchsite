@@ -76,10 +76,18 @@ div.footer-1-inner {
   .menu {
     flex: 1;
     padding: 0 32px 0 0;
+
+    @include respond(mobile){
+      padding: 0 0 32px 0;
+    }
   }
   .newsletter {
     flex: 1;
     padding: 0 32px;
+    @include respond(mobile){
+      padding: 0 0 32px 0;
+    }
+
     ul {
       margin: 0;
       padding: 0;
@@ -109,6 +117,7 @@ div.footer-1-inner {
     border-right: none;
     @include respond(mobile){
       text-align: center;
+      padding: 0;
 
       h3{
         text-align: left;
@@ -171,7 +180,8 @@ ul#menu-footer-menu {
   @include respond(mobile){
     width: initial;
     display: block;
-    padding: 12px 32px;
+    padding: 0;
+    text-align: center;
   }
 }
 .footer-2  {

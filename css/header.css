@@ -70,6 +70,12 @@ button, .button, input[type="button"], input[type="submit"] {
       color: #fff;
       background: #ff6319; }
 
+.gform_wrapper form .gform_body .field-sublabel-hide .ginput_complex.ginput_container label {
+  display: none; }
+
+.newsletter .gform_wrapper form .gform_body input {
+  width: 100%; }
+
 .showMobile {
   display: none; }
 
@@ -113,7 +119,9 @@ button, .button, input[type="button"], input[type="submit"] {
     text-overflow: initial;
     white-space: initial;
     cursor: initial;
-    overflow: scroll; }
+    overflow: auto;
+    padding-top: 14px;
+    padding-bottom: 14px; }
     .alertBox.showAlert label:after {
       transform: rotate(45deg);
       top: 12px; }
@@ -274,7 +282,8 @@ header {
         border: 1px solid #f6f6f6;
         box-shadow: 1px 2px 2px -1px rgba(0, 0, 0, 0.33);
         width: 300px;
-        transition: .15s; }
+        transition: .15s;
+        z-index: 1; }
         @media (max-width: 1000px) {
           header ul#menu-header-menu > li ul.sub-menu {
             width: 100%;

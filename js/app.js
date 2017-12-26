@@ -8,12 +8,8 @@ function checkScroll(){
 			$body.trigger('headerChange');
 		}
 	}else{
-
-		if(!$body.hasClass("pageScrolled")){
-			$body.removeClass("pageScrolled");
-
-			$body.trigger('headerChange');
-		}
+		$body.removeClass("pageScrolled");
+		$body.trigger('headerChange');
 	}
 }
 
@@ -28,7 +24,7 @@ $(function() { // event rigging
 
 	$("body").on('headerChange', function(e){
 		//retake sticky header measurements
-		stickyHeaders.recalculateTop($(".module-header"));
+		stickyHeaders.recalculateDimensions();
 	});
 
 
@@ -102,14 +98,17 @@ $(function() { // event rigging
 	  };
 
 
-	  var recalculateTop = function(){
-	  	$stickies.each(function(i) {
-			$(this)
-	            .data('originalPosition', $(this).offset().top)
-	            .data('originalHeight', $(this).outerHeight())
-	              .parent()
-	              .height($(this).outerHeight());
-		});
+	  var recalculateDimensions = function(){
+	  	if($stickies){
+		  		
+		  	$stickies.each(function(i) {
+				$(this)
+		            .data('originalPosition', $(this).offset().top + $("header").outerHeight())
+		            .data('originalHeight', $(this).outerHeight() )
+		              .parent()
+		              .height($(this).outerHeight());
+			});
+	  	}
 	  };
 
 	  var _whenScrolling = function() {
@@ -149,7 +148,8 @@ $(function() { // event rigging
 	  };
 
 	  return {
-	    load: load
+	    load: load,
+	    recalculateDimensions: recalculateDimensions
 	  };
 	})();
 
