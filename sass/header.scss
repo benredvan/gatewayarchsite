@@ -28,8 +28,18 @@
 	width: 100%;
 	white-space: nowrap;
 	overflow: hidden;
-	text-overflow: ellipsis;
 	cursor: pointer;
+
+	.inner{
+		box-sizing: border-box;
+		padding: 0;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		width: 1200px;
+		position: relative;
+		padding-left: 35px;
+		padding-right: 24px;
+	}
 
 	label{
 		color: $orange;
@@ -43,22 +53,21 @@
 			transform: rotate(-135deg);
 			transition: .15s;
 			position: absolute;
-			top: 14px;
-			right: 14px;
+			top: 7px;
+			right: 3px;
 		}
 	}
 	&.showAlert{
 		max-height: 50%;
 		text-overflow: initial;
 		white-space: initial;
-		cursor: initial;
 		overflow: auto;
 		padding-top: 14px;
 		padding-bottom: 14px;
 		
 		label:after{
 			transform: rotate(45deg);
-			top: 12px;
+			top: 0px;
 		}
 	}
 
@@ -70,11 +79,30 @@
 	}
 }
 
+/*
+.pageScrolled{
+	.alertBox{
+
+		.inner{
+
+		}
+	}
+	header{
+		position: fixed;
+	}
+	.modules{
+		margin-top: 62px;
+	}
+}
+*/
+
+	
 header{
 	background: $white;
 	border-bottom: 1px solid $grey-light;
 	width: 100%;
 	height: 62px;
+
     @include respond(mobile){
 		height: 124px;
 		transition: .15s;
@@ -83,6 +111,8 @@ header{
 			height: 62px;
 		}
 	}
+
+
 
 	.innerWrapper{
 		max-width: $outerWidth;
@@ -161,12 +191,13 @@ header{
 		list-style-type: none;
 		margin: 0;
 		padding: 0;
-		transition: .15s;
+		transition: max-height .15s;
 		width: calc(100% - 491px);
 
 		@include respond(mobile) {
 			box-shadow: 0px 5px 10px -1px rgba(0, 0, 0, 0.33);
 			overflow: auto;
+			width: 100%;
 			max-height: 0px;
 			display: block;
 		}
@@ -195,6 +226,14 @@ header{
 
 					@include respond(mobile){
 						border-top: 0;
+					}
+				}
+			}
+			@include respond(mobile){
+				&:hover, &.activeMenu{
+
+					ul.sub-menu{
+						display: initial;
 					}
 				}
 			}
@@ -245,8 +284,6 @@ header{
 					border: 0;
 					border-top: 0;
 
-
-
 					> a:after{
 						transform: rotate(45deg);
 						top: 12px;
@@ -292,8 +329,8 @@ header{
 
 					a{
 						width: 100%;
-						line-height: 2.75;
-						padding: 9px 50px;
+						line-height: 1.2;
+						padding: 20px 50px;
 						text-transform: capitalize;
 						text-decoration: none;
 						position: relative;
@@ -424,7 +461,7 @@ header{
 }
 
 .show-nav{
-	transition: .15s;
+	transition: max-height .15s;
 	.mobileMenu{
 		.hideMenuOpen{
 			display: none;
@@ -593,7 +630,7 @@ header{
 	SCROLL STICKY HEADERS
 	https://codepen.io/chrissp26/pen/gBrdo 
 */
-.module .module-header.fixed {
+.module .module-header.fixed, #tribe-events-bar.fixed {
 	position: fixed;
 	top: 0;
 	width: 100%;
@@ -605,134 +642,140 @@ header{
 	}
 }
 
-.module .module-header.fixed.absolute {
+.module .module-header.fixed.absolute, #tribe-events-bar.absolute {
   position: absolute;
 }
 
 /* timeline */
 .timeline{
+	.inner{
+		padding: 0;
 
-	.timelineItem{
-		text-align: right;
-		position: relative;
-		top: -2em;
-		box-sizing: border-box;
-		width: calc(50% - .5px);
-		border-left: 0;
-		border-right: 1px solid $blue;
-		margin-right: 50%;
-		margin-left: 0;
-		padding-right: 3em;
-		padding-bottom: 2em;
-
-		@include respond(mobile){
-			text-align: left;
-			top: 0;
-			position: initial;
-			width: 100%;
-			border: 0;
-			margin: initial;
-			padding: initial;
+		.timelineItem{
+			box-sizing: border-box;
+			
+			text-align: right;
+			position: relative;
+			top: -2em;
+			box-sizing: border-box;
+			width: calc(50% + 6.5px);
+			border-left: 0;
+			border-right: 2px solid $blue;
+			margin-right: 50%;
+			margin-left: 0;
+			padding-top: 2em;
+			padding-right: 3em;
 			padding-bottom: 2em;
-			border-bottom: 1px solid $blue;
-			margin-bottom: 2em;
-		}
-
-		&:before{
-			//lil dot guy
-			content: ' ';
-			position: absolute;
-			right: 1.5em;
-			top: 9px;
-			border: 3px solid red;
-			border-radius: 50%;
-			background: white;
-			width: .5em;
-			height: .5em;
-			z-index: 2;
-			@include respond(mobile){
-				display: none;
+			
+			&:first-child{
+				top: 0;
 			}
-		}
-		&:after{
-			//lil line
-			content: ' ';
-			position: absolute;
-			width: calc(1.5em + 1px);
-			top: 1em;
-			right: 0px;
-			left: initial;
-			height: 1px;
-			border-top: 1px solid $blue;
-			z-index: 0;
-			@include respond(mobile){
-				display: none;
-			}
-		}
-		.timelineImg{
-			position: absolute;
-			top: 0;
-			left: calc(100% - 1em);
-			width: 100%;
 
 			@include respond(mobile){
+				text-align: left;
+				top: 0;
 				position: initial;
-				top: initial;
-				left: initial;
+				width: 100%;
+				border: 0;
+				margin: initial;
+				padding: initial;
+				padding: 2em 0;
+				border-bottom: 1px solid $blue;
+				display: block;
 			}
 
-			img{
-				max-width: calc(100% - 3em);
-				@include respond(mobile){
-					margin-top: 2em;
-					max-width: 100%;
-				}
-			}
 			&:before{
-				//lil line
+				//lil dot guy
 				content: ' ';
 				position: absolute;
-				width: 2em;
-				top: 1em;
-				left: 1em;
-				height: 1px;
-				border-top: 1px solid $blue;
+				right: 1.5em;
+				top: 2.5em;
+				border: 3px solid red;
+				border-radius: 50%;
+				background: white;
+				width: .5em;
+				height: .5em;
 				z-index: 0;
-
 				@include respond(mobile){
 					display: none;
 				}
 			}
-		}
-
-		&:nth-child(even){
-			text-align: left;
-			border-right: 0;
-			border-left: 1px solid $blue;
-			margin-left: calc(50% - 1px);
-			margin-right: 0;
-			padding-left: 3em;
-
-			@include respond(mobile){
-				text-align: left;
-				border: 0px;
-				margin: initial;
-				padding: initial;
-				width: 100%;
-				padding-bottom: 2em;
-				border-bottom: 1px solid $blue;
-				margin-bottom: 2em;
-			}
-
-			&:before{
-				right: initial;
-				left: 1.5em;
-			}
 			&:after{
-				right: initial;
-				left: -1px;
+				//lil line
+				content: ' ';
+				position: absolute;
+				width: calc(1.5em + 1px);
+				top: 2.85em;
+				right: 0px;
+				left: initial;
+				height: 1px;
+				border-top: 2px solid $blue;
+				z-index: 0;
+				@include respond(mobile){
+					display: none;
+				}
 			}
-		}
+			.timelineImg{
 
+				@include respond(mobile){
+					position: initial;
+					top: initial;
+					left: initial;
+				}
+
+				img{
+					@include respond(mobile){
+						margin-top: 2em;
+						width: 100%;
+					}
+				}
+				&:before{
+					//lil line
+					content: ' ';
+					position: absolute;
+					width: 2em;
+					top: 1em;
+					left: 1em;
+					height: 1px;
+					border-top: 2px solid $blue;
+					z-index: 0;
+
+					@include respond(mobile){
+						display: none;
+					}
+				}
+			}
+
+			&:nth-child(even){
+				text-align: left;
+				border-right: 0;
+				border-left: 2px solid $blue;
+				margin-left: calc(50% + 4px);
+				margin-right: 0;
+				padding-left: 3em;
+
+				@include respond(mobile){
+					text-align: left;
+					border: 0px;
+					margin: initial;
+					padding: initial;
+					width: 100%;
+					padding-bottom: 2em;
+					border-bottom: 1px solid $blue;
+					margin-bottom: 2em;
+				}
+
+				&:before{
+					right: initial;
+					left: 1.5em;
+				}
+				&:after{
+					right: initial;
+					left: -1px;
+				}
+			}
+
+		}
+			
 	}
 }

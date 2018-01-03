@@ -1,15 +1,23 @@
+
+//TODO move alot of this DOM manipulation into on('headerChange')
 function checkScroll(){
 	$body = $("body");
-	if($(window).scrollTop() > 3){
+	if( $(window).scrollTop() > $(".alertBox").outerHeight() ){
 		if(!$body.hasClass("pageScrolled")){
-			$body.addClass("pageScrolled");
 			$(".alertBox").removeClass("showAlert");
+			$body.addClass("pageScrolled").trigger('headerChange');
+			
+			//close the menu
+			$("header").removeClass("show-nav").find("#menu-header-menu > li")
+				.removeClass("activeMenu").siblings().removeClass("activeMenu");
 
-			$body.trigger('headerChange');
 		}
 	}else{
-		$body.removeClass("pageScrolled");
-		$body.trigger('headerChange');
+		$body.removeClass("pageScrolled").trigger('headerChange');
+
+		//close the menu
+		$("header").removeClass("show-nav").find("#menu-header-menu > li")
+			.removeClass("activeMenu").siblings().removeClass("activeMenu");
 	}
 }
 
@@ -21,28 +29,28 @@ $(function() { // event rigging
 
 	checkScroll();
 
-
 	$("body").on('headerChange', function(e){
-		//retake sticky header measurements
-		stickyHeaders.recalculateDimensions();
+		
 	});
 
-
-
-	//debounced resize event
 	var resizeTimer;
 	$(window).on('resize', function(e) {
 		clearTimeout(resizeTimer);
 		resizeTimer = setTimeout(function() {
+		//debounced resize event
 		
 		//resizing has "stopped", cleanup menu
 		$("header").removeClass("show-nav");
 		$("header li.activeMenu").removeClass("activeMenu");
 	            
-	  }, 250);
+	    checkScroll();
+	  }, 1);
 	});
-	//BEN TODO: debounce this scroll event too plz
-	$(window).on('scroll', checkScroll);
+	var scrollTimer;
+	$(window).on('scroll',  function(e) {
+		//debounced scroll event
+		checkScroll();
+	});
 
 	$(document).click(function(e) {
 		if ($(e.target).closest('header').length === 0) {
@@ -57,7 +65,7 @@ $(function() { // event rigging
 	});
 
 	/* level-2 menu toggle */
-	$("#navigation>li>a").on('touchstart', function (e) {
+	$("#menu-header-menu>li>a").on('touchstart', function (e) {
 	    e.preventDefault();
 		var rect = e.target.getBoundingClientRect();
 		var xpos = e.targetTouches[0].pageX - rect.left;
@@ -68,98 +76,49 @@ $(function() { // event rigging
 			document.location=$(this).attr("href");
 	    }
 	});
-
-	var stickyHeaders = (function() {
-
-	  var $window = $(window),
-	      $stickies;
-
-
-	  var load = function(stickies) {
-
-
-	    if (typeof stickies === "object" && stickies.length > 0) {
-
-	      $stickies = stickies.each(function() {
-
-	        var $thisSticky = $(this).wrap('<div class="followWrap" />');
-	  
-	        $thisSticky
-	            .data('originalPosition', $thisSticky.offset().top)
-	            .data('originalHeight', $thisSticky.outerHeight())
-	              .parent()
-	              .height($thisSticky.outerHeight()); 			  
-	      });
-
-	      $window.off("scroll.stickies").on("scroll.stickies", function() {
-			  _whenScrolling();		
-	      });
-	    }
-	  };
-
-
-	  var recalculateDimensions = function(){
-	  	if($stickies){
-		  		
-		  	$stickies.each(function(i) {
-				$(this)
-		            .data('originalPosition', $(this).offset().top + $("header").outerHeight())
-		            .data('originalHeight', $(this).outerHeight() )
-		              .parent()
-		              .height($(this).outerHeight());
-			});
-	  	}
-	  };
-
-	  var _whenScrolling = function() {
-
-	    $stickies.each(function(i) {			
-
-	      var $thisSticky = $(this),
-	          $stickyPosition = $thisSticky.data('originalPosition');
-
-
-	      if ($stickyPosition <= $window.scrollTop()) {        
-
-	      	//we've hit top
-	        var $nextSticky = $stickies.eq(i + 1),
-	            $nextStickyPosition = $nextSticky.data('originalPosition') - $thisSticky.data('originalHeight');
-
-	        $thisSticky.addClass("fixed");
-
-	        if ($nextSticky.length > 0 && ($thisSticky.offset().top ) >= $nextStickyPosition) {
-
-	          $thisSticky.addClass("absolute").css("top", $nextStickyPosition);
-	        }
-
-	      } else {
-	        
-	        var $prevSticky = $stickies.eq(i - 1);
-
-	        $thisSticky.removeClass("fixed");
-
-	        //overlapping sticky coming on!
-	        if ($prevSticky.length > 0 && $window.scrollTop() <= $thisSticky.data('originalPosition') - $thisSticky.data('originalHeight')) {
-
-	          $prevSticky.removeClass("absolute").removeAttr("style");
-	        }
-	      }
-	    });
-	  };
-
-	  return {
-	    load: load,
-	    recalculateDimensions: recalculateDimensions
-	  };
-	})();
-
-	$(function() {
-	  stickyHeaders.load($(".module-header")); 
+	$(".sub-menu>li>a").on('click', function(e){
+		//collapse the menu
+		$("header").removeClass("show-nav").find(".activeMenu").removeClass("activeMenu");
 	});
 
 	$(".alertBox").on("click", function(){
 		$(this).toggleClass("showAlert");
 	});
+
+	//waypoint sticky headers
+	var stickys = new Array();
+
+	var stickyHandler = function(direction){
+		var previousWaypoint = this.waypoint.previous();
+		var nextWaypoint = this.waypoint.next();
+		$(".sticky-wrapper").removeClass('wp-current wp-next').addClass("wp-previous");
+		
+
+		$(this.element).parent(".sticky-wrapper").removeClass('wp-previous').addClass('wp-current');
+		/*
+		if (previousWaypoint) {
+		  $(previousWaypoint.element).addClass('wp-previous');
+		}
+		*/
+		if (nextWaypoint) {
+		  $(nextWaypoint.element).removeClass('wp-current').addClass('wp-next');
+		}
+	}
+
+	var $theHeader = $("header").each(function(){
+		stickys.push(new Waypoint.Sticky({
+			element: $(this),
+			handler: stickyHandler
+		}))
+	});
+	var $theModules = $(".module-header").each(function(){
+		stickys.push(new Waypoint.Sticky({
+			element: $(this),
+			offset: ($("header").outerHeight()),
+			group: "module-headers",
+			handler: stickyHandler
+		}))
+	})
 
 	//-- end event rigging
 });

@@ -1,7 +1,3 @@
-<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,600,600i,700,700i" rel="stylesheet">
-<link rel="stylesheet" type="text/css" href="<?php echo(get_bloginfo("template_url")); ?>/css/header.css">
-<link rel="stylesheet" type="text/css" href="<?php echo(get_bloginfo("template_url")); ?>/css/style.css">
-<link rel="stylesheet" type="text/css" href="<?php echo(get_bloginfo("template_url")); ?>/css/footer.css">
 <footer>
 	<div class="social showMobile">
 		<?php
@@ -96,6 +92,8 @@
 	}]
 }
 </script>
+<script type="text/javascript" src="http://gar.oldstlouis.com/wp-content/themes/gateway-arch/js/jquery.waypoints.min.js"></script>
+<script type="text/javascript" src="http://gar.oldstlouis.com/wp-content/themes/gateway-arch/js/shortcuts/sticky.js"></script>
 
 </body>
 

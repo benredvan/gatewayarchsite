@@ -1,10 +1,6 @@
 
-
-BEN TASKS:
-set .alertTop text width: max-width, add padding:10px 0 when open, 
-mobile menu show/hide: pick a direction with jerome (fade in and vertical slidedown)
-footer mobile margins on learnmore bottom and newsletter width (FIXED?)
-sticky bar - sub grey menu
+asks:
+Google Analytics…?
 
 
 JEROMES TASKS:
@@ -14,12 +10,12 @@ Homepage events carousel, can be anything not just events
 Server Migration to Gateway arch
 
 
-
+BENS TASKS:
+Events Page
+Timeline Page
+All Addresses to Google Maps
 
 TODO post-xmas:
 Pageload optimization
 
 
-asks:
-Breadcrumbs?
-Google Analytics…?

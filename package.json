@@ -2937,6 +2937,7 @@
     "gulp-sass": "^3.1.0",
     "gulp-sourcemaps": "^2.6.1",
     "gulp-util": "^3.0.8",
-    "vinyl-ftp": "^0.6.0"
+    "vinyl-ftp": "^0.6.0",
+    "waypoints": "^4.0.1"
   }
 }

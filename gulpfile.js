@@ -10,7 +10,7 @@ var fileGlobsToWatch = [
 	'images/**',
 	'js/**',
 	'fonts/**',
-	'*.php'
+	'**/*.php'
 ];
 
 //Sass builder
@@ -29,11 +29,9 @@ gulp.task('deploy-push', function () {
 		host:     '77.104.146.35',
 		user:     'gar@oldstlouis.com',
 		password: 'UZhnOI1KukP)',
-		parallel: 10,
+		parallel: 3,
 		log:      gutil.log
 	} );
-
-
 
 	// using base = '.' will transfer everything to /public_html correctly
 	// turn off buffering in gulp.src for best performance

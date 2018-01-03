@@ -39,7 +39,7 @@ footer{
   }
 }
 
-div.footer-1-inner {
+.footer-1-inner {
   margin: 0 auto;
   width: 100%;
   max-width: $outerWidth;
@@ -97,11 +97,12 @@ div.footer-1-inner {
       font-size: 14px;
       line-height: 18.35px;
     }
-    input[type='text'] {
+    .gform_wrapper input:not([type="radio"]):not([type="checkbox"]):not([type="submit"]):not([type="button"]):not([type="image"]):not([type="file"]){
       width: 100%;
-      padding: 12px;
+      padding: 8px;
       margin: 12px 0 12px 0;
     }
+
     label {
       display: none;
     }
@@ -151,13 +152,16 @@ ul#menu-footer-menu {
   column-gap: 30px;
   font-size: 14px;
 
-  @include respond(mobile){
+  @media (max-width: 550px) {
     column-count: 1;
   }
 
   li {
     margin: 0 0 8px 0;
     padding: 0;
+    display: inline-block;
+    width: 100%;
+    
     a {
       margin: 0;
       padding: 0;
@@ -184,6 +188,7 @@ ul#menu-footer-menu {
     text-align: center;
   }
 }
+
 .footer-2  {
   padding: 8px 40px;
   .copyright {
@@ -193,8 +198,30 @@ ul#menu-footer-menu {
     
     @include respond(mobile){
       text-align: center;
-      padding-right: 32px;
+      line-height: 1.2;
+      padding: 10px 0;
     }
   }
 
+}
+.gform_wrapper li.gfield.gfield_error.gfield_contains_required div.gfield_description.validation_message{
+
+      border: 0px;
+      padding: 0;
+}
+
+.gform_wrapper div.validation_error{
+  display: none;
+}
+body .gform_wrapper li.gfield.gfield_error, .gform_wrapper li.gfield.gfield_error.gfield_contains_required.gfield_creditcard_warning{
+  background: transparent;
+  border: 0;
+  padding: 0;
+  margin-bottom: 0 !important;
+}
+body .gform_wrapper select{
+  height: 36px;
+  @include respond(mobile){
+    height: 46px;
+  }
 }
