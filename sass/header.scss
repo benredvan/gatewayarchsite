@@ -78,30 +78,13 @@
 		}
 	}
 }
-
-/*
-.pageScrolled{
-	.alertBox{
-
-		.inner{
-
-		}
-	}
-	header{
-		position: fixed;
-	}
-	.modules{
-		margin-top: 62px;
-	}
-}
-*/
-
 	
 header{
 	background: $white;
 	border-bottom: 1px solid $grey-light;
 	width: 100%;
 	height: 62px;
+	z-index: 5;
 
     @include respond(mobile){
 		height: 124px;
@@ -111,9 +94,7 @@ header{
 			height: 62px;
 		}
 	}
-
-
-
+	
 	.innerWrapper{
 		max-width: $outerWidth;
 		margin: 0 auto;

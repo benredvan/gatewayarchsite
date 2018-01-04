@@ -89,19 +89,22 @@ $(function() { // event rigging
 	var stickys = new Array();
 
 	var stickyHandler = function(direction){
+		
 		var previousWaypoint = this.waypoint.previous();
 		var nextWaypoint = this.waypoint.next();
+
 		$(".sticky-wrapper").removeClass('wp-current wp-next').addClass("wp-previous");
 		
-
 		$(this.element).parent(".sticky-wrapper").removeClass('wp-previous').addClass('wp-current');
-		/*
-		if (previousWaypoint) {
-		  $(previousWaypoint.element).addClass('wp-previous');
-		}
-		*/
-		if (nextWaypoint) {
-		  $(nextWaypoint.element).removeClass('wp-current').addClass('wp-next');
+		
+		if(direction=="up"){
+			if(previousWaypoint){
+				$(previousWaypoint.element).removeClass('wp-previous')//.addClass('wp-previous-upcoming');
+			}
+		}else{
+			if (nextWaypoint) {
+			  $(nextWaypoint.element).removeClass('wp-current').addClass('wp-next');
+			}
 		}
 	}
 

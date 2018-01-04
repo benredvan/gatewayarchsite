@@ -81,10 +81,29 @@ button, .button, input[type="button"], input[type="submit"] {
   position: fixed;
   top: 0;
   opacity: 1;
-  transition: opacity .15s; }
+  z-index: 2;
+  transition: opacity .05s; }
   .stuck.module-header {
     margin-top: 62px;
     width: 100%; }
+
+header.stuck {
+  z-index: 4; }
+
+.wp-previous .module-header.stuck {
+  opacity: 0; }
+
+.sticky-wrapper {
+  z-index: 3; }
+
+.modules .module .module-header {
+  z-index: 3; }
+
+a.anchor {
+  display: block;
+  position: relative;
+  top: -63px;
+  visibility: hidden; }
 
 footer .social {
   float: right; }
