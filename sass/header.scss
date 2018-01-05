@@ -634,22 +634,60 @@ header{
 
 		.timelineItem{
 			box-sizing: border-box;
+			display: flex;
 			
 			text-align: right;
 			position: relative;
-			top: -2em;
-			box-sizing: border-box;
-			width: calc(50% + 6.5px);
-			border-left: 0;
-			border-right: 2px solid $blue;
-			margin-right: 50%;
-			margin-left: 0;
-			padding-top: 2em;
-			padding-right: 3em;
-			padding-bottom: 2em;
-			
+
 			&:first-child{
 				top: 0;
+			}
+
+			.timelineContent{
+				box-sizing: border-box;
+				border-right: 2px solid $blue;
+				width: calc(50% + 3.5px);
+				border-left: 0;
+				padding: 2em 3em 2em 0;
+    			position: relative;
+
+    			@include respond(mobile){
+    				width: 100%;
+    				border: 0;
+    				padding: 2em 0;
+    			}
+
+				&:before{
+				//lil dot guy
+				content: ' ';
+				position: absolute;
+				right: 1.5em;
+				top: 2.5em;
+				border: 3px solid red;
+				border-radius: 50%;
+				background: white;
+				width: .5em;
+				height: .5em;
+				z-index: 0;
+					@include respond(mobile){
+						display: none;
+					}
+				}
+				&:after{
+					//lil line
+					content: ' ';
+					position: absolute;
+					width: calc(1.5em + 1px);
+					top: 2.85em;
+					right: 0px;
+					left: initial;
+					height: 1px;
+					border-top: 2px solid $blue;
+					z-index: 0;
+					@include respond(mobile){
+						display: none;
+					}
+				}
 			}
 
 			@include respond(mobile){
@@ -665,48 +703,26 @@ header{
 				display: block;
 			}
 
-			&:before{
-				//lil dot guy
-				content: ' ';
-				position: absolute;
-				right: 1.5em;
-				top: 2.5em;
-				border: 3px solid red;
-				border-radius: 50%;
-				background: white;
-				width: .5em;
-				height: .5em;
-				z-index: 0;
-				@include respond(mobile){
-					display: none;
-				}
-			}
-			&:after{
-				//lil line
-				content: ' ';
-				position: absolute;
-				width: calc(1.5em + 1px);
-				top: 2.85em;
-				right: 0px;
-				left: initial;
-				height: 1px;
-				border-top: 2px solid $blue;
-				z-index: 0;
-				@include respond(mobile){
-					display: none;
-				}
-			}
+			
 			.timelineImg{
+				width: 50%;
+				text-align: right;
+				position: relative;
+				padding-top: 1em;
 
 				@include respond(mobile){
 					position: initial;
 					top: initial;
 					left: initial;
+					padding: 0;
+					width: 100%;
 				}
 
 				img{
+					width: calc(100% - 2em);
+
 					@include respond(mobile){
-						margin-top: 2em;
+						margin-top: 0;
 						width: 100%;
 					}
 				}
@@ -715,7 +731,7 @@ header{
 					content: ' ';
 					position: absolute;
 					width: 2em;
-					top: 1em;
+					top: 2.85em;
 					left: 1em;
 					height: 1px;
 					border-top: 2px solid $blue;
@@ -728,31 +744,36 @@ header{
 			}
 
 			&:nth-child(even){
-				text-align: left;
-				border-right: 0;
-				border-left: 2px solid $blue;
-				margin-left: calc(50% + 4px);
-				margin-right: 0;
-				padding-left: 3em;
+				flex-direction: row-reverse;
 
-				@include respond(mobile){
+				.timelineContent{
+					border-right: 0px;
+					border-left: 2px solid #001d77;
 					text-align: left;
-					border: 0px;
-					margin: initial;
-					padding: initial;
-					width: 100%;
-					padding-bottom: 2em;
-					border-bottom: 1px solid $blue;
-					margin-bottom: 2em;
-				}
+					padding: 2em 0 2em 3em;
+					width: calc(50% - 1.3px);
 
-				&:before{
-					right: initial;
-					left: 1.5em;
+
+	    			@include respond(mobile){
+	    				width: 100%;
+	    				border: 0;
+	    				padding: 2em 0;
+	    			}
+
+					&:before{
+						left: 1.5em;
+					}
+					&:after{
+						left: 0px;
+					}
 				}
-				&:after{
-					right: initial;
-					left: -1px;
+				.timelineImg{
+					text-align: left;
+
+					&:before{
+						right: 0;
+						left: initial;
+					}
 				}
 			}
 
