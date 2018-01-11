@@ -50,10 +50,10 @@
 			height: 12px;
 			border-right: 1.5px solid #4d4f53;
 			border-bottom: 1.5px solid #4d4f53;
-			transform: rotate(-135deg);
+			transform: rotate(45deg);
 			transition: .15s;
 			position: absolute;
-			top: 7px;
+			top: -2px;
 			right: 3px;
 		}
 	}
@@ -66,8 +66,8 @@
 		padding-bottom: 14px;
 		
 		label:after{
-			transform: rotate(45deg);
-			top: 0px;
+			transform: rotate(-135deg);
+			top: 8px;
 		}
 	}
 
@@ -779,5 +779,13 @@ header{
 
 		}
 			
+	}
+}
+
+.header-video{
+	position: relative;
+
+	.inner{
+		position: absolute;
 	}
 }

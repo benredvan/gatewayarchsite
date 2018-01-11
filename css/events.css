@@ -97,13 +97,16 @@ header.stuck {
   z-index: 3; }
 
 .modules .module .module-header {
-  z-index: 3; }
+  z-index: 1; }
 
 a.anchor {
   display: block;
   position: relative;
   top: -63px;
   visibility: hidden; }
+
+::-webkit-media-controls {
+  display: none !important; }
 
 .tribe-events-ajax-loading {
   display: none; }
@@ -194,8 +197,8 @@ a.tribe-events-gmap {
     background-position: 50% 0; }
     @media (max-width: 1000px) {
       .type-tribe_events .single-event-image {
-        width: 33%;
-        height: 17%;
+        width: 30vw;
+        height: 30vw;
         background-position: cover;
         min-width: initial;
         float: left;
@@ -249,9 +252,13 @@ a.tribe-events-gmap {
       padding: .5em;
       margin: 0 0 0 12px; } }
 
-@media (max-width: 1000px) {
-  #tribe-events-content .inner {
-    padding: 1em 0 0; } }
+#tribe-events #tribe-events-content {
+  padding-top: 0;
+  padding-bottom: 0;
+  margin-bottom: 0; }
+  @media (max-width: 1000px) {
+    #tribe-events #tribe-events-content .inner {
+      padding: 1em 0 0; } }
 
 #tribe-events-content-wrapper .tribe-events-list .tribe-events-loop .tribe-events-content {
   clear: initial;
@@ -261,12 +268,13 @@ a.tribe-events-gmap {
       display: none; } }
 
 #tribe-events-content-wrapper .tribe-events-loop .tribe-events-event-meta {
-  font-size: .75em;
+  font-size: 14px;
   margin-top: 1em;
   margin-bottom: 0; }
   #tribe-events-content-wrapper .tribe-events-loop .tribe-events-event-meta .icon {
-    vertical-align: bottom;
-    margin-right: 2px; }
+    vertical-align: middle;
+    margin-right: 2px;
+    margin-bottom: 3px; }
   @media (max-width: 1000px) {
     #tribe-events-content-wrapper .tribe-events-loop .tribe-events-event-meta {
       display: inline-block;
@@ -278,7 +286,7 @@ a.tribe-events-gmap {
 
 #tribe-events-content-wrapper .tribe-event-schedule-details, #tribe-events-content-wrapper .tribe-events-venue-details {
   display: inline-block;
-  width: 49%;
+  width: 30%;
   vertical-align: top; }
   #tribe-events-content-wrapper .tribe-event-schedule-details .tribe-address, #tribe-events-content-wrapper .tribe-events-venue-details .tribe-address {
     display: none; }

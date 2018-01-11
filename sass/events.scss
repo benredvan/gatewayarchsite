@@ -103,8 +103,8 @@ a.tribe-events-gmap{
 
 		@include respond(mobile){
 			//maybe need a better way to compute this ratio...
-			width: 33%;
-			height: 17%;
+			width: 30vw;
+			height: 30vw;
 			background-position: cover;
 			min-width: initial;
 			float: left;
@@ -185,7 +185,10 @@ a.tribe-events-gmap{
 	}
 }
 
-#tribe-events-content{
+#tribe-events #tribe-events-content{    
+	padding-top: 0;
+    padding-bottom: 0;
+    margin-bottom: 0;
 
 	@include respond(mobile){
 		.inner{
@@ -204,13 +207,14 @@ a.tribe-events-gmap{
 		}
 	}
 	.tribe-events-loop .tribe-events-event-meta{
-		font-size: .75em;
+		font-size: 14px;
 		margin-top: 1em;
 		margin-bottom: 0;
 
 		.icon{
-			vertical-align: bottom;
+			vertical-align: middle;
 			margin-right: 2px;
+			margin-bottom: 3px;
 		}
 		@include respond(mobile){
 			display: inline-block;
@@ -225,7 +229,7 @@ a.tribe-events-gmap{
 	}
 	.tribe-event-schedule-details, .tribe-events-venue-details{
 		display: inline-block;
-		width: 49%;
+		width: 30%;
 		vertical-align: top;
 
 		.tribe-address{

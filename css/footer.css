@@ -97,13 +97,16 @@ header.stuck {
   z-index: 3; }
 
 .modules .module .module-header {
-  z-index: 3; }
+  z-index: 1; }
 
 a.anchor {
   display: block;
   position: relative;
   top: -63px;
   visibility: hidden; }
+
+::-webkit-media-controls {
+  display: none !important; }
 
 footer .social {
   float: right; }

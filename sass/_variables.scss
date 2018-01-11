@@ -145,11 +145,14 @@ header.stuck{
 
 }
 .modules .module .module-header{
-	z-index: 3;
+	z-index: 1;
 }
 a.anchor {
     display: block;
     position: relative;
     top: -63px; //62 header + 118 menu
     visibility: hidden;
+}
+::-webkit-media-controls {
+  display:none !important;
 }
